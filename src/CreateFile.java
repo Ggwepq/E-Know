@@ -1,7 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class CreateFile extends JFrame{
+    final String file = "files\\";
 
     JPanel cntrlPane = new JPanel();
     JTextField writeField = new JTextField();
@@ -35,6 +40,7 @@ public class CreateFile extends JFrame{
         fileSave.setText("Save File");
         fileSave.setPreferredSize(new Dimension(100, 35));
         fileSave.setFocusable(false);
+        fileSave.addActionListener(e -> fileSave());
 
         goBack.setText("Go Back");
         goBack.setPreferredSize(new Dimension(100, 35));
@@ -60,11 +66,41 @@ public class CreateFile extends JFrame{
 
         add(fileName);
     }
+
+    public void fileSave(){
+        String filename = writeField.getText()+".txt";
+
+        createFile(filename);
+    }
+
     public void goBack(){
         dispose();
         new TeacherFrame().setVisible(true);
     }
 
+    public void createFile(String fileName){
+        try {
+            File myObj = new File(file+fileName);
+            if (myObj.createNewFile()) {
+            } else {
+                writeField.setText(writeField.getText());
+            }
+            writeFile(myObj.getPath());
+        } catch (IOException e) {
+            writeField.setText("Something went Wrong");
+            e.printStackTrace();
+        }
+    }
+
+    public void writeFile(String name){
+        try {
+            FileWriter myWriter = new FileWriter(name);
+            myWriter.write(fileName.getText());
+            myWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     public static void main(){

@@ -11,6 +11,7 @@ public class SetupFrame extends JFrame {
 
     static TeacherFrame tf = new TeacherFrame();
     static StudentFrame sf = new StudentFrame();
+    FileViewer fv = new FileViewer();
 
     JPanel teacherPane = new JPanel();
     JPanel studentPane = new JPanel();
@@ -90,6 +91,11 @@ public class SetupFrame extends JFrame {
 
         studentPane.add(studentIcon);
         studentPane.add(studentLabel);
+    }
+
+    public void goBack(){
+        fv.setVisible(false);
+        tf.setVisible(true);
     }
 
     public static void main(String[] args) {
