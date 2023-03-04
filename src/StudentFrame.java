@@ -14,6 +14,7 @@ public class StudentFrame extends JFrame{
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setLayout(new BorderLayout());
+        this.setTitle("E-Know Student");
 
         leftPane.setPreferredSize(new Dimension(300, 10));
         leftPane.setLayout(new FlowLayout(FlowLayout.CENTER, 200, 0));
@@ -82,11 +83,24 @@ public class StudentFrame extends JFrame{
         libPane.setBounds(0,0,1000, 765);
         browsePane.setBounds(0,0,1000, 765);
 
+        libPane.setBackground(new Color(0xc7c7c7));
+        browsePane.setBackground(new Color(0xc7c7c7));
+
+        libPane.setLayout(new FlowLayout(FlowLayout.CENTER));
+        browsePane.setLayout(new FlowLayout(FlowLayout.CENTER));
+
         libPane.setVisible(true);
         browsePane.setVisible(false);
 
         centerPane.add(libPane);
         centerPane.add(browsePane);
+    }
+
+    public void libPane(){
+
+    }
+
+    public void browsePane(){
 
     }
 

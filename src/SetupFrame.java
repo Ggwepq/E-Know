@@ -9,11 +9,12 @@ public class SetupFrame extends JFrame {
 
     final String img = "assets\\img\\";
 
-    TeacherFrame tf = new TeacherFrame();
-    StudentFrame sf = new StudentFrame();
+    static TeacherFrame tf = new TeacherFrame();
+    static StudentFrame sf = new StudentFrame();
 
     JPanel teacherPane = new JPanel();
     JPanel studentPane = new JPanel();
+    static String user = "";
 
     public SetupFrame(){
 
@@ -53,6 +54,7 @@ public class SetupFrame extends JFrame {
             public void mouseClicked(MouseEvent e){
                 dispose();
                 tf.setVisible(true);
+                user = "teacher";
             }
         });
 
@@ -66,6 +68,7 @@ public class SetupFrame extends JFrame {
             public void mouseClicked(MouseEvent e){
                 dispose();
                 sf.setVisible(true);
+                user = "student";
             }
         });
 
@@ -90,7 +93,13 @@ public class SetupFrame extends JFrame {
     }
 
     public static void main(String[] args) {
-        new SetupFrame().setVisible(true);
+        if (user.isBlank()){
+            new SetupFrame().setVisible(true);
+        } else if (user.equals("teacher")){
+            tf.setVisible(true);
+        } else if (user.equals("student")){
+            sf.setVisible(true);
+        }
     }
 
 }
